@@ -8,11 +8,21 @@
 // ***
 // ****
 // *****
-fn main() {
+fn loops_for() {
 	for x in range(0u, 5) {
 		for _ in range(0u, x+1) {
 			print!("*");
 		}		
 		println!("");
 	}
+}
+
+#[allow(dead_code)]
+fn main() {
+	loops_for()
+}
+
+#[test]
+fn print_pattern_test() {
+	loops_for();	
 }
