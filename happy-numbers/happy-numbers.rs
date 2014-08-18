@@ -6,14 +6,14 @@
 // Those numbers for which this process ends in 1 are
 // happy numbers.
 
-fn happy_nums(mut input: uint) -> uint {
+fn happy_nums(mut input: uint) -> bool {
 	let mut tenths = 0u;
 	let mut n = 0u;
 
 	let mut limit = 1000u;
 
 	if input == 1 {
-		return input;
+		return true;
 	}
 
 	while input != 1 && limit != 0 {
@@ -26,7 +26,7 @@ fn happy_nums(mut input: uint) -> uint {
 		input = n;
 		limit = limit - 1;
 	}
-	input
+	input == 1
 }
 
 #[allow(dead_code)]
@@ -37,7 +37,7 @@ fn main(){
 		if count == 8 {
 			break;
 		}
-		if happy_nums(i) == 1 {
+		if happy_nums(i) {
 			println!("{}", i);
 			count += 1;
 		}
@@ -47,20 +47,20 @@ fn main(){
 
 #[test]
 fn first_eight_happy_nums_test() {
-	assert_eq!(happy_nums(1), 1);
-	assert_eq!(happy_nums(7), 1);
-	assert_eq!(happy_nums(10), 1);
-	assert_eq!(happy_nums(13), 1);
-	assert_eq!(happy_nums(19), 1);
-	assert_eq!(happy_nums(23), 1);
-	assert_eq!(happy_nums(28), 1);
-	assert_eq!(happy_nums(31), 1);
+	assert_eq!(happy_nums(1), true);
+	assert_eq!(happy_nums(7), true);
+	assert_eq!(happy_nums(10), true);
+	assert_eq!(happy_nums(13), true);
+	assert_eq!(happy_nums(19), true);
+	assert_eq!(happy_nums(23), true);
+	assert_eq!(happy_nums(28), true);
+	assert_eq!(happy_nums(31), true);
 }
 
 #[test]
 #[should_fail]
 fn unhappy_nums_test() {
-	assert_eq!(happy_nums(2), 1);
-	assert_eq!(happy_nums(11), 1);
-	assert_eq!(happy_nums(15), 1);
+	assert_eq!(happy_nums(2), true);
+	assert_eq!(happy_nums(11), true);
+	assert_eq!(happy_nums(15), true);
 }
