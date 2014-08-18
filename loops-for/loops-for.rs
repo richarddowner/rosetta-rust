@@ -23,6 +23,6 @@ fn main() {
 }
 
 #[test]
-fn print_pattern_test() {
+fn loops_for_test() {
 	loops_for();	
 }
