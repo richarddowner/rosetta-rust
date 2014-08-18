@@ -9,7 +9,10 @@
 // ****
 // *****
 fn main() {
-	for i in range(1u, 5) {
-		
+	for x in range(0u, 5) {
+		for y in range(0u, x+1) {
+			print!("*");
+		}		
+		println!("");
 	}
 }
