@@ -10,21 +10,27 @@
 // *****
 use std::iter::range_inclusive;
 
-fn loops_for() {
+fn loops_for() -> String {
+	let mut stars = String::new();
 	for i in range_inclusive(1u, 5) {
 		for _ in range_inclusive(1u, i) {
-			print!("*");
+			stars.push_str("*");
 		}		
-		println!("");
+		stars.push_str("\n");
 	}
+	stars
 }
 
 #[allow(dead_code)]
 fn main() {
-	loops_for();
+	let galaxy = loops_for();
+	print!("{}", galaxy);
 }
 
 #[test]
 fn loops_for_test() {
-	loops_for();	
+	let galaxy = loops_for();	
+	let mut galaxy_test = String::new();
+	galaxy_test.push_str("*\n**\n***\n****\n*****\n");
+	assert_eq!(galaxy, galaxy_test);
 }
