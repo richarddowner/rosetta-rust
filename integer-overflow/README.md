@@ -1,4 +1,6 @@
-http://rosettacode.org/wiki/Integer_overflow
+## Integer Overflow
+
+`http://rosettacode.org/wiki/Integer_overflow`
 
 | Expression | Result that does not fit into 32-bit signed int |
 | ------------- |-------------|
@@ -19,15 +21,13 @@ http://rosettacode.org/wiki/Integer_overflow
 | Expression | Result that does not fit into 32-bit unsigned int |
 | ------------- |-------------|
 | -4294967295 | -4294967295 |
-|||
-|||
-|||
-|||
+| 3000000000 + 3000000000 | 6000000000 |
+| 2147483647 - 4294967295 | -2147483648 |
+|65537 * 65537 | 4295098369 |
 
 | Expression | Result that does not fit into 64-bit unsigned int |
 | ------------- |-------------|
-|||
-|||
-|||
-|||
-|||
+| -18446744073709551615 | -18446744073709551615 |
+| 10000000000000000000 + 10000000000000000000 | 20000000000000000000 |
+| 9223372036854775807 - 18446744073709551615 | -9223372036854775808 |
+| 4294967296 * 4294967296 | 18446744073709551616 |
