@@ -8,22 +8,38 @@
 
 fn happy_nums(mut input: uint) -> uint {
 	let mut tenths = 0u;
-	let mut n = 0u64;
+	let mut n = 0u;
 
-	while input > 0 {
-		tenths = input % 10;
-		n += (tenths*tenths) as u64;
-		input /= 10;
-
-		println!("{}", n);
-		println!("{}", input);
+	if input == 1 {
+		return input;
 	}
 
+	while input != 1 {
+		n = 0;
+		while input > 0 {
+			tenths = input % 10;
+			n += tenths * tenths;
+			input /= 10;
+		}
+		input = n;
+	}
 	tenths
 }
 
+#[allow(dead_code)]
 fn main(){
-	println!("{}", happy_nums(19));
+	let mut count = 0u;
+	let mut i = 1u;
+	loop {
+		if count == 8 {
+			break;
+		}
+		if happy_nums(i) == 1 {
+			println!("{}", i);
+			count += 1;
+		}
+		i += 1;
+	}
 }
 
 #[test]
