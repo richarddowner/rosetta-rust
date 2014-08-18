@@ -21,7 +21,7 @@ fn loops_for() {
 
 #[allow(dead_code)]
 fn main() {
-	loops_for()
+	loops_for();
 }
 
 #[test]
