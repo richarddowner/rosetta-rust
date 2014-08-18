@@ -8,9 +8,11 @@
 // ***
 // ****
 // *****
+use std::iter::range_inclusive;
+
 fn loops_for() {
-	for x in range(0u, 5) {
-		for _ in range(0u, x+1) {
+	for i in range_inclusive(1u, 5) {
+		for _ in range_inclusive(1u, i) {
 			print!("*");
 		}		
 		println!("");
