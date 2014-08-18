@@ -10,11 +10,13 @@ fn happy_nums(mut input: uint) -> uint {
 	let mut tenths = 0u;
 	let mut n = 0u;
 
+	let mut limit = 1000u;
+
 	if input == 1 {
 		return input;
 	}
 
-	while input != 1 {
+	while input != 1 && limit != 0 {
 		n = 0;
 		while input > 0 {
 			tenths = input % 10;
@@ -22,8 +24,9 @@ fn happy_nums(mut input: uint) -> uint {
 			input /= 10;
 		}
 		input = n;
+		limit = limit - 1;
 	}
-	tenths
+	input
 }
 
 #[allow(dead_code)]
@@ -52,4 +55,12 @@ fn first_eight_happy_nums_test() {
 	assert_eq!(happy_nums(23), 1);
 	assert_eq!(happy_nums(28), 1);
 	assert_eq!(happy_nums(31), 1);
+}
+
+#[test]
+#[should_fail]
+fn unhappy_nums_test() {
+	assert_eq!(happy_nums(2), 1);
+	assert_eq!(happy_nums(11), 1);
+	assert_eq!(happy_nums(15), 1);
 }
