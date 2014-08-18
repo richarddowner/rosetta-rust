@@ -6,9 +6,19 @@
 // Those numbers for which this process ends in 1 are
 // happy numbers.
 
-fn happy_nums(input: uint) -> uint {
+fn happy_nums(mut input: uint) -> uint {
 	let mut tenths = 0u;
-	tenths = input%10;
+	let mut n = 0u64;
+
+	while input > 0 {
+		tenths = input % 10;
+		n += (tenths*tenths) as u64;
+		input /= 10;
+
+		println!("{}", n);
+		println!("{}", input);
+	}
+
 	tenths
 }
 
