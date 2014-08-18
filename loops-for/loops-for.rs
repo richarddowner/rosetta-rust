@@ -21,16 +21,15 @@ fn loops_for() -> String {
 	stars
 }
 
-#[allow(dead_code)]
-fn main() {
-	let galaxy = loops_for();
-	print!("{}", galaxy);
-}
-
 #[test]
 fn loops_for_test() {
 	let galaxy = loops_for();	
+
 	let mut galaxy_test = String::new();
 	galaxy_test.push_str("*\n**\n***\n****\n*****\n");
+
 	assert_eq!(galaxy, galaxy_test);
 }
+
+#[allow(dead_code)]
+fn main(){}
