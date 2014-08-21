@@ -1,6 +1,6 @@
 ## Integer Overflow
 
-`http://rosettacode.org/wiki/Integer_overflow`
+http://rosettacode.org/wiki/Integer_overflow
 
 | Expression | Result that does not fit into 32-bit signed int |
 | ------------- |-------------|
