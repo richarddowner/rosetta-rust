@@ -1,0 +1,5 @@
+[package]
+
+name = "integer-overflow"
+version = "0.0.1"
+authors = ["Richard Downer <richarddowna@gmail.com>"]
