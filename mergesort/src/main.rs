@@ -5,10 +5,10 @@ fn mergesort(left: uint, right: uint, list:&[int]) -> () {
 	}
 
 	// get array indices
-	let mut l_start = left;
-	let mut l_end = (left+right)/2;
-	let mut r_start = l_end;
-	let mut r_end = right;
+	let l_start = left;
+	let l_end = (left+right)/2;
+	let r_start = l_end;
+	let r_end = right;
 
 	// recursive call on left half
 	mergesort(l_start, l_end, list);
@@ -19,7 +19,13 @@ fn mergesort(left: uint, right: uint, list:&[int]) -> () {
 }
 
 fn merge(list:&[int], l_start: uint, l_end:uint, r_start:uint, r_end:uint) -> () {
-	println!("We got to merge");
+	// temp list sizes
+	let l_len = l_end - l_start;
+	let r_len = r_end - r_start;
+
+	// temp lists for comparison
+	let mut l_half: [uint, ..l_len];
+	let mut r_half: [uint, ..r_len];	
 }
 
 //#[test]
