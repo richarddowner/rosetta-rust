@@ -53,9 +53,17 @@ fn merge(list:&[uint], l_start: uint, l_end:uint, r_start:uint, r_end:uint) -> (
 		i = i + 1;
 	}
 
+	// handle leftover values
+	while l < l_half.len() {
+		list[i] = l_half[l];
+		i = i + 1; l = l + 1;
+	}
+	while r < r_half.len() {
+		list[i] = r_half[r];
+		i = i + 1; r = r + 1;
+	}
 }
 
-//#[test]
 fn main() {
 	let mut unsorted: [uint, ..10] = [1, 5, 2, 9, 8, 4, 3, 6, 7, 0];
 	mergesort(0, unsorted.len(), &unsorted);
