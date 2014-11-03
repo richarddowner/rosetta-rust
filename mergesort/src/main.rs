@@ -1,4 +1,9 @@
-fn mergesort(left: uint, right: uint, list:&[uint]) -> () {
+fn main() {
+	let mut list = vec![1_u64, 5, 2, 9, 8, 4, 3, 6, 7, 0];
+	mergesort(0, list.len() as u64, &mut list);
+}
+
+fn mergesort(left: u64, right: u64, list: &mut Vec<u64>) -> () {
 	// base case
 	if(right - left <= 1) { 
 		return; 
@@ -18,53 +23,47 @@ fn mergesort(left: uint, right: uint, list:&[uint]) -> () {
 	merge(list, l_start, l_end, r_start, r_end);	
 }
 
-fn merge(list:&[uint], l_start: uint, l_end:uint, r_start:uint, r_end:uint) -> () {
+fn merge(list: &mut Vec<u64>, l_start:u64, l_end:u64, r_start:u64, r_end:u64) -> () {
 
 	// temp lists for comparison
-	let mut l_half: Vec<uint> = Vec::new();
-	let mut r_half: Vec<uint> = Vec::new();
+	let mut l_half = Vec::new();
+	let mut r_half = Vec::new();
 
 	let mut i = l_start;
-	let mut l = 0_u;
-	let mut r = 0_u;
+	let mut l = 0_u64;
+	let mut r = 0_u64;
 
 	// copy values into temp lists
 	while i < l_end {
-		l_half.insert(l, list[i] as uint);
-		i = i + 1; l = l + 1;
+		l_half[l as uint] = list[i as uint];
+		i += 1; l += 1;
 	}
 	i = r_start;
 	while i < r_end {
-		r_half.insert(r, list[i] as uint);
-		i = i + 1; r = r + 1;
+		r_half[r as uint] = list[i as uint];
+		i += 1; r += 1;
 	}
 
 	// merge the values back into positions in the main list
-	i = l_start; r = 0_u; l = 0_u;
-	while l < l_half.len() && r < r_half.len() {
-		// if left value < r value, move left value
-		if(l_half[l] < r_half[r]) {
-			list[i] = l_half[l];
-			l = l + 1;
+	i = l_start; r = 0_u64; l = 0_u64;
+	while l < l_half.len() as u64 && r < r_half.len() as u64 {
+		if(l_half[l as uint] < r_half[r as uint]) {
+			list[i as uint] = l_half[l as uint];
+			l += 1;
 		} else {
-			list[i] = r_half[r];
-			r = r + 1;
+			list[i as uint] = r_half[r as uint];
+			r += 1;
 		}		
-		i = i + 1;
+		i += 1;
 	}
 
 	// handle leftover values
-	while l < l_half.len() {
-		list[i] = l_half[l];
-		i = i + 1; l = l + 1;
+	while l < l_half.len() as u64 {
+		list[i as uint] = l_half[l as uint];
+		i += 1; l += 1;
 	}
-	while r < r_half.len() {
-		list[i] = r_half[r];
-		i = i + 1; r = r + 1;
+	while r < r_half.len() as u64 {
+		list[i as uint]= r_half[r as uint];
+		i += 1; r += 1;
 	}
-}
-
-fn main() {
-	let mut unsorted: [uint, ..10] = [1, 5, 2, 9, 8, 4, 3, 6, 7, 0];
-	mergesort(0, unsorted.len(), &unsorted);
 }
